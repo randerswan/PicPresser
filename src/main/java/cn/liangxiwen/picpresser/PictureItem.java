@@ -16,4 +16,8 @@ public class PictureItem {
     public void setPicFile(File picFile) {
         this.picFile = picFile;
     }
+
+    public boolean isFolder() {
+        return picFile != null && picFile.isDirectory();
+    }
 }

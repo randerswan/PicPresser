@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PicPresser</string>
+    <string name="picpresser_parent_folder">上层文件夹</string>
+    <string name="picpresser_make">生成小图</string>
 </resources>

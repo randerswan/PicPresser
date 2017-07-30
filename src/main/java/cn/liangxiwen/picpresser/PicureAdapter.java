@@ -20,12 +20,20 @@ public class PicureAdapter extends BaseAdapter {
 
     public PicureAdapter(Activity activity, File parent) {
         this.activity = activity;
+        resetFile(parent);
+    }
+
+    public void resetFile(File parent) {
+        if (parent != null) {
+            picList.clear();
+        }
         File[] files = parent == null ? null : parent.listFiles();
         for (int i = 0; files != null && i < files.length; i++) {
             File file = files[i];
             PictureItem item = new PictureItem(file);
             picList.add(item);
         }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -34,7 +42,7 @@ public class PicureAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public PictureItem getItem(int i) {
         return picList.get(i);
     }
 
@@ -52,6 +60,8 @@ public class PicureAdapter extends BaseAdapter {
         }
         TextView tv = (TextView) itemView.findViewById(R.id.tv_item_pic_list_name);
         tv.setText(item.getPicFile().getName());
+        TextView tvFolder = (TextView) itemView.findViewById(R.id.tv_item_pic_list_folder_icon);
+        tvFolder.setVisibility(item.isFolder() ? View.VISIBLE : View.GONE);
         return itemView;
     }
 }
