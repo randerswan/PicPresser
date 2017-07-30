@@ -2,18 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:padding="10dp">
 
     <TextView
         android:id="@+id/tv_item_pic_list_name"
         android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <ProgressBar
+        android:id="@+id/pb_item_pic_list_making"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp" />
 
     <TextView
         android:id="@+id/tv_item_pic_list_folder_icon"
         android:layout_width="wrap_content"
-        android:text="&gt;&gt;"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="&gt;&gt;" />
 
 </LinearLayout>

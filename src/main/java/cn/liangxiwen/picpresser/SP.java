@@ -10,6 +10,7 @@ import java.io.File;
  */
 
 public class SP {
+    public static String FOLDER_FUFFIX = "_PicPresser";
     private static String SP_NAME = "cn.liangxiwen.picpresser.SP.SP_NAME";
     private static String EXTRA_NAME_LAST_PATH = "cn.liangxiwen.picpresser.SP.EXTRA_NAME_LAST_PATH";
 

@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import java.io.File;
 
-public class PicPressMainActivity extends Activity implements AdapterView.OnItemClickListener {
-    private String FOLDER_FUFFIX = "_PicPresser";
+public class PicPressMainActivity extends Activity implements AdapterView.OnItemClickListener, PicPressListener {
     private File picPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
     private TextView tvPath;
     private ListView lvPicList;
@@ -59,7 +58,8 @@ public class PicPressMainActivity extends Activity implements AdapterView.OnItem
         bnMake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                adapter.startMakeSmallerPicture(PicPressMainActivity.this);
+                bnMake.setEnabled(false);
             }
         });
     }
@@ -73,5 +73,15 @@ public class PicPressMainActivity extends Activity implements AdapterView.OnItem
             adapter.resetFile(folder);
             tvPath.setText(folder.toString());
         }
+    }
+
+    @Override
+    public void onPicPressStart() {
+        bnMake.setEnabled(false);
+    }
+
+    @Override
+    public void onPicPressEnd() {
+        bnMake.setEnabled(true);
     }
 }
