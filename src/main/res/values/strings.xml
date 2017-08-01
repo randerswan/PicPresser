@@ -2,4 +2,9 @@
     <string name="app_name">PicPresser</string>
     <string name="picpresser_parent_folder">上层文件夹</string>
     <string name="picpresser_make">生成小图</string>
+
+    <string name="picpresser_setting">设置</string>
+    <string name="picpresser_setting_size_hint">图片尺寸级别（480、720、1080等等）</string>
+    <string name="picpresser_setting_quality_hint">图片质量（0-100）</string>
+
 </resources>

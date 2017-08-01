@@ -17,15 +17,21 @@ public class PicureAdapter extends BaseAdapter {
     private Activity activity;
     private File currentFile;
     private PicPressListener listener;
+    private int size;
+    private int quality;
 
     public PicureAdapter(Activity activity, LinkedList<PictureItem> picList) {
         this.activity = activity;
         this.picList = picList;
+        size = SP.getPicSize(activity);
+        quality = SP.getPicQuality(activity);
     }
 
     public PicureAdapter(Activity activity, File parent) {
         this.activity = activity;
         resetFile(parent);
+        size = SP.getPicSize(activity);
+        quality = SP.getPicQuality(activity);
     }
 
     public void resetFile(File parent) {
@@ -110,8 +116,8 @@ public class PicureAdapter extends BaseAdapter {
                 try {
                     File toSave = new File(saveFile, item.getPicFile().getName());
                     if (!toSave.exists()) {
-                        Bitmap bm = BitmapUtils.getPicByMaxWidthOrHeight(item.getPicFile().toString(), 1080);
-                        BitmapUtils.savePhotoToSDCard(saveFile.toString(), item.getPicFile().getName(), bm);
+                        Bitmap bm = BitmapUtils.getPicByMaxWidthOrHeight(item.getPicFile().toString(), size);
+                        BitmapUtils.savePhotoToSDCard(saveFile.toString(), item.getPicFile().getName(), bm, quality);
                         bm.recycle();
                     }
                 } catch (Exception e) {
@@ -146,6 +152,13 @@ public class PicureAdapter extends BaseAdapter {
             if (listener != null) {
                 listener.onPicPressEnd();
             }
+        }
+    }
+
+    public void readSettings() {
+        if (activity != null) {
+            size = SP.getPicSize(activity);
+            quality = SP.getPicQuality(activity);
         }
     }
 }

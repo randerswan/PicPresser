@@ -77,6 +77,10 @@ public class BitmapUtils {
     }
 
     public static String savePhotoToSDCard(String path, String photoName, Bitmap photoBitmap) {
+        return savePhotoToSDCard(path, photoName, photoBitmap, 100);
+    }
+
+    public static String savePhotoToSDCard(String path, String photoName, Bitmap photoBitmap, int quality) {
 
         if (android.os.Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED)) {
@@ -101,7 +105,7 @@ public class BitmapUtils {
                 fileOutputStream = new FileOutputStream(photoFile);
                 if (photoBitmap != null) {
 
-                    if (photoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)) {
+                    if (photoBitmap.compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream)) {
                         fileOutputStream.flush();
                     }
 

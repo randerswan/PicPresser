@@ -11,23 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/bn_picpresser_parent_folder"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:text="@string/picpresser_parent_folder"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bn_picpresser_parent_folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/picpresser_parent_folder" />
+
+        <Button
+            android:id="@+id/bn_picpresser_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/picpresser_setting" />
+    </LinearLayout>
 
     <ListView
-        android:layout_weight="1"
         android:id="@+id/lv_pic_presser_main"
-        android:cacheColorHint="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:cacheColorHint="@android:color/transparent"></ListView>
 
     <Button
-        android:text="@string/picpresser_make"
         android:id="@+id/bn_picpresser_create"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="@string/picpresser_make" />
 
 </LinearLayout>

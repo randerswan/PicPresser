@@ -1,6 +1,7 @@
 package cn.liangxiwen.picpresser;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -17,6 +18,7 @@ public class PicPressMainActivity extends Activity implements AdapterView.OnItem
     private PicureAdapter adapter;
     private View bnParentFolder;
     private View bnMake;
+    private View bnSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,14 @@ public class PicPressMainActivity extends Activity implements AdapterView.OnItem
                 bnMake.setEnabled(false);
             }
         });
+
+        bnSetting = findViewById(R.id.bn_picpresser_setting);
+        bnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PicPressMainActivity.this, PicPressSettingsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -83,5 +93,24 @@ public class PicPressMainActivity extends Activity implements AdapterView.OnItem
     @Override
     public void onPicPressEnd() {
         bnMake.setEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adapter != null) {
+            adapter.readSettings();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bnMake.setOnClickListener(null);
+        bnSetting.setOnClickListener(null);
+        bnParentFolder.setOnClickListener(null);
+        bnMake = null;
+        bnSetting = null;
+        bnParentFolder = null;
     }
 }
