@@ -117,8 +117,16 @@ public class PicureAdapter extends BaseAdapter {
                     File toSave = new File(saveFile, item.getPicFile().getName());
                     if (!toSave.exists()) {
                         Bitmap bm = BitmapUtils.getPicByMaxWidthOrHeight(item.getPicFile().toString(), size);
-                        BitmapUtils.savePhotoToSDCard(saveFile.toString(), item.getPicFile().getName(), bm, quality);
-                        bm.recycle();
+                        if (bm != null) {
+                            BitmapUtils.savePhotoToSDCard(saveFile.toString(), item.getPicFile().getName(), bm, quality);
+                            bm.recycle();
+                            ExifUtils.copyExif(toSave, item.getPicFile());
+                        } else {
+                            try {
+                                toSave.delete();
+                            } catch (Exception e) {
+                            }
+                        }
                     }
                 } catch (Exception e) {
                 }
