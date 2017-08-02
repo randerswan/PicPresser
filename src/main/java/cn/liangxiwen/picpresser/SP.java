@@ -24,7 +24,7 @@ public class SP {
     }
 
     public static void saveLastPath(File file, Activity act) {
-        saveString(act, file.toString(), EXTRA_NAME_LAST_PATH);
+        saveString(act, EXTRA_NAME_LAST_PATH, file.toString());
     }
 
     public static int getPicQuality(Activity act) {
@@ -45,11 +45,6 @@ public class SP {
         saveInt(act, EXTRA_SIZE, size);
     }
 
-    public static int getInt(Activity act, String extra, int defalutInt) {
-        int value = act.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).getInt(extra, defalutInt);
-        return value;
-    }
-
     public static String getString(Activity act, String extra, String defaultStr) {
         String value = act.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).getString(extra, defaultStr);
         return value;
@@ -60,6 +55,11 @@ public class SP {
             act.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).edit().putString(extra, value).commit();
         } catch (Exception e) {
         }
+    }
+
+    public static int getInt(Activity act, String extra, int defalutInt) {
+        int value = act.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE).getInt(extra, defalutInt);
+        return value;
     }
 
     public static void saveInt(Activity act, String extra, int value) {
