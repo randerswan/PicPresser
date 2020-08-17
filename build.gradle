@@ -20,10 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'it.sephiroth.android.exif:android-exif-extended:1.0.6'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
