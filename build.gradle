@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "cn.liangxiwen.picpresser"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
@@ -24,4 +24,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'it.sephiroth.android.exif:android-exif-extended:1.0.6'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
